@@ -23,8 +23,8 @@ client.connect(function (err,result){
 })
 
 //OBTENER restaurante todos los de la tabla
-app.post("/reporte1", async (req, res) => {
- 
+app.get("/reporte1", async (req, res) => {
+    client.execute('SELECT * FROM Institucion;');
 });
   
  
