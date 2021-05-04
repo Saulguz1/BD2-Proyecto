@@ -76,7 +76,7 @@ app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
     client.execute(query, [cui,fechai,fechaf], { prepare: true }).then(result=>res.json(result.rows));;
 });
 
-app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
+app.post("/insertnuevo", async (req, res) => {
     let body = req.body;
     let nombre1 = body.nombre1;
     let apellido1 = body.apellido1;
@@ -139,7 +139,7 @@ app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
 function getDateTime() {
 
     var date = new Date();
-    var year = date.getFullYear();
+    var year = date.getYear();
     var month = date.getMonth() + 1;
     month = (month < 10 ? "0" : "") + month;
     var day  = date.getDate();
