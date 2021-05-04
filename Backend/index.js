@@ -132,8 +132,16 @@ app.post("/insertnuevo", async (req, res) => {
         }
       ];
       
-      client.batch(queries, { prepare: true });
-      res.json({mensaje : 1});
+      client.batch(queries, { prepare: true })
+      .then(function() {
+        res.json({mensaje : 1});
+      })
+      .catch(function(err) {
+        res.json({mensaje : 0});
+      });
+
+
+      
 });
 
 function getDateTime() {
