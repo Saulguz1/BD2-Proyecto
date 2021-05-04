@@ -29,42 +29,42 @@ app.get("/gettransaccionbycuenta", async (req, res) => {
 app.post("/posttransaccionbycuenta", async (req, res) => {
     let body = req.body;
     let cui = body.cui;
-    const query = 'SELECT * FROM Transaccion_by_CuentaHabiente WHERE cui = ?';
-    return client.execute(query, [cui], { prepare: true });
+    const query = 'SELECT * FROM Proyecto.Transaccion_by_CuentaHabiente WHERE cui = ?';
+    client.execute(query, [cui], { prepare: true }).then(result=>res.json(result.rows));
 });
  
 app.get("/getDebito_by_Institucion", async (req, res) => {
-    client.execute('SELECT * FROM Debito_by_Institucion;');
+    client.execute('SELECT * FROM Proyecto.Debito_by_Institucion;').then(result=>res.json(result.rows));
 });
   
 app.post("/postDebito_by_Institucion", async (req, res) => {
     let body = req.body;
     let institucion = body.institucion;
-    const query = 'SELECT * FROM Debito_by_Institucion WHERE institucion =  ?';
-    return client.execute(query, [institucion], { prepare: true });
+    const query = 'SELECT * FROM Proyecto.Debito_by_Institucion WHERE institucion =  ?';
+    client.execute(query, [institucion], { prepare: true }).then(result=>res.json(result.rows));
 });
 
 app.get("/getCredito_by_Institucion", async (req, res) => {
-    return client.execute('SELECT * FROM Credito_by_Institucion;');
+    client.execute('SELECT * FROM Proyecto.Credito_by_Institucion;').then(result=>res.json(result.rows));
 });
   
 app.post("/postCredito_by_Institucion", async (req, res) => {
     let body = req.body;
     let institucion = body.institucion;
-    const query = 'SELECT * FROM Credito_by_Institucion WHERE institucion = ?';
-    return client.execute(query, [institucion], { prepare: true });
+    const query = 'SELECT * FROM Proyecto.Credito_by_Institucion WHERE institucion = ?';
+    client.execute(query, [institucion], { prepare: true }).then(result=>res.json(result.rows));
 });
 
 app.get("/getCuentaHabiente", async (req, res) => {
-    return client.execute('SELECT * FROM CuentaHabiente;');
+    client.execute('SELECT * FROM Proyecto.CuentaHabiente;').then(result=>res.json(result.rows));
 });
   
 app.get("/getInstitucion", async (req, res) => {
-    return client.execute('SELECT * FROM Institucion;');
+    client.execute('SELECT * FROM Proyecto.Institucion;').then(result=>res.json(result.rows));
 });
   
 app.get("/getMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
-    return client.execute('SELECT * FROM Movimientos_by_Cuentahabiente_by_mes;');
+    client.execute('SELECT * FROM Proyecto.Movimientos_by_Cuentahabiente_by_mes;').then(result=>res.json(result.rows));
 });
 
 app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
@@ -72,8 +72,8 @@ app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
     let cui = body.cui;
     let fechai = body.fechai;
     let fechaf = body.fechaf;
-    const query = 'SELECT * FROM Movimientos_by_Cuentahabiente_by_mes WHERE cui = ? AND fechatransf >= ? AND fechatransf < ?;';
-    return client.execute(query, [cui,fechai,fechaf], { prepare: true });
+    const query = 'SELECT * FROM Proyecto.Movimientos_by_Cuentahabiente_by_mes WHERE cui = ? AND fechatransf >= ? AND fechatransf < ?;';
+    client.execute(query, [cui,fechai,fechaf], { prepare: true }).then(result=>res.json(result.rows));;
 });
 
 app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
@@ -103,37 +103,37 @@ app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
 
     const queries = [
         {
-          query: 'INSERT INTO Transaccion_by_CuentaHabiente (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, saldoinicial, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)',
+          query: 'INSERT INTO Proyecto.Transaccion_by_CuentaHabiente (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, saldoinicial, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)',
           params: [ nombre1, apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,saldoi1,montotrasf,fechatransf ]
         },
         {
-            query: 'INSERT INTO Debito_by_Institucion (institucion, abreviatura, montotransf,fechatransf) VALUES (?, ?, ?, ?)',
+            query: 'INSERT INTO Proyecto.Debito_by_Institucion (institucion, abreviatura, montotransf,fechatransf) VALUES (?, ?, ?, ?)',
             params: [institucion1,abreviacion1,montotrasf,fechatransf]
         },
         {
-            query: 'INSERT INTO Credito_by_Institucion (institucion, abreviatura, montotransf,fechatransf) VALUES (?, ?, ?, ?)',
+            query: 'INSERT INTO Proyecto.Credito_by_Institucion (institucion, abreviatura, montotransf,fechatransf) VALUES (?, ?, ?, ?)',
             params: [institucion2,abreviacion2,montotrasf,fechatransf]
         },
         {
-            query: 'INSERT INTO CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
+            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
             params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1]
         },
         {
-            query: 'INSERT INTO CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
+            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
             params: [nombre2,apellido2,cui2,email2,fechareg2,genero2,institucion2,abreviacion2]
         },
         {
-            query: 'INSERT INTO Institucion (institucion,abreviatura) VALUES (?, ?)',
+            query: 'INSERT INTO Proyecto.Institucion (institucion,abreviatura) VALUES (?, ?)',
             params: [institucion1,abreviacion1]
         },
         {
-            query: 'INSERT INTO Movimientos_by_Cuentahabiente_by_mes (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            query: 'INSERT INTO Proyecto.Movimientos_by_Cuentahabiente_by_mes (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
             params: [nombre1,apellido1,cui1,email1.fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,montotrasf,fechatransf]
         }
       ];
       
       await client.batch(queries, { prepare: true });
-      return res.json({mensage : 1});
+      res.json({mensage : 1});
 });
 
 function getDateTime() {
