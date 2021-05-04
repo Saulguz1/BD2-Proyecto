@@ -101,36 +101,8 @@ app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
     let montotrasf = body.montotrasf;
     let fechatransf = getDateTime();
 
-    const queries = [
-        {
-          query: 'INSERT INTO Proyecto.Transaccion_by_CuentaHabiente (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, saldoinicial, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)',
-          params: [ nombre1, apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,saldoi1,montotrasf,fechatransf ]
-        },
-        {
-            query: 'INSERT INTO Proyecto.Debito_by_Institucion (institucion, abreviatura, montotransf,fechatransf) VALUES (?, ?, ?, ?)',
-            params: [institucion1,abreviacion1,montotrasf,fechatransf]
-        },
-        {
-            query: 'INSERT INTO Proyecto.Credito_by_Institucion (institucion, abreviatura, montotransf,fechatransf) VALUES (?, ?, ?, ?)',
-            params: [institucion2,abreviacion2,montotrasf,fechatransf]
-        },
-        {
-            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
-            params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1]
-        },
-        {
-            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
-            params: [nombre2,apellido2,cui2,email2,fechareg2,genero2,institucion2,abreviacion2]
-        },
-        {
-            query: 'INSERT INTO Proyecto.Institucion (institucion,abreviatura) VALUES (?, ?)',
-            params: [institucion1,abreviacion1]
-        },
-        {
-            query: 'INSERT INTO Proyecto.Movimientos_by_Cuentahabiente_by_mes (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            params: [nombre1,apellido1,cui1,email1.fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,montotrasf,fechatransf]
-        }
-      ];
+    const query =  'INSERT INTO Proyecto.Transaccion_by_CuentaHabiente (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, saldoinicial, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)';
+    client.execute(query, [ nombre1, apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,saldoi1,montotrasf,fechatransf ], { prepare: true }).then(result=>res.json(result.rows));;
       
            
 });
