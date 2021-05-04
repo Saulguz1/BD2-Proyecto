@@ -5,6 +5,7 @@ $_SESSION['reporte6']=[];
 $url = 'http://127.0.0.1:5000/postMovimientos_by_Cuentahabiente_by_mes';
 $cui = '0000';
 $mes = '01';
+$ano = '2020';
 $fechai = '2020-01-01';
 $fechaf = '2020-01-31';
 
@@ -14,16 +15,19 @@ if (isset($_POST['inputCui'])) {
 if (isset($_POST['inputmes'])) {
     $mes = $_POST['inputmes'];
 }
+if (isset($_POST['inputano'])) {
+    $ano = $_POST['inputano'];
+}
 
 if($mes == '01' ||$mes == '03'||$mes == '05'||$mes == '07'||$mes == '08'||$mes == '10'||$mes == '12'){
-    $fechai = '2020-'.$mes.'-01';
-    $fechaf = '2020-'.$mes.'-31';
+    $fechai = $ano.'-'.$mes.'-01';
+    $fechaf = $ano.'-'.$mes.'-31';
 }else if($mes == '04'||$mes == '06'||$mes == '11'||$mes == '09'){
-    $fechai = '2020-'.$mes.'-01';
-    $fechaf = '2020-'.$mes.'-30';
+    $fechai = $ano.'-'.$mes.'-01';
+    $fechaf = $ano.'-'.$mes.'-30';
 }else{
-    $fechai = '2020-'.$mes.'-01';
-    $fechaf = '2020-'.$mes.'-28';
+    $fechai = $ano.'-'.$mes.'-01';
+    $fechaf = $ano.'-'.$mes.'-28';
 }
 
 $data = array('cui'=> $cui,'fechai'=> $fechai,'fechaf'=> $fechaf);

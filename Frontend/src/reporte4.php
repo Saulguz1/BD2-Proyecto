@@ -23,7 +23,6 @@ include_once "header.php";
                                                 <th>Fecha Reg</th>
                                                 <th>Genero</th>
                                                 <th>Institucion</th>
-                                                <th>Abreviatura</th>
                                                 <th>Sañdo Inicial</th>
                                               
                                             </tr>
@@ -37,7 +36,6 @@ include_once "header.php";
                                                 <th>Fecha Reg</th>
                                                 <th>Genero</th>
                                                 <th>Institucion</th>
-                                                <th>Abreviatura</th>
                                                 <th>Saldo Inicial</th>
                                             </tr>
                                         </tfoot>
@@ -54,7 +52,6 @@ include_once "header.php";
                                                 <td align='center'>".$item['fechareg']."</td>
                                                 <td align='center'>".$item['genero']."</td>
                                                 <td align='center'>".$item['institucion']."</td>
-                                                <td align='center'>".$item['abreviatura']."</td>
                                                 <td align='center'>".$item['saldoinicial']."</td>
                                                 </tr>
                                                 ";

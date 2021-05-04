@@ -21,10 +21,7 @@ $cuenta1 = explode(',', $strcuenta1);
 $cuenta2 = explode(',', $strcuenta2);
 
 if($monto > $cuenta1[9]){
-    echo "<script>
-                alert('Error al realizar transaccion, no tiene fondos suficientes');
-                window.location= 'consulta7.php'
-    </script>";
+    $_SESSION['color']=1;
    header("Location: subirreporte.php");
    exit;
 }else{
@@ -43,20 +40,14 @@ if($monto > $cuenta1[9]){
     echo $result;
 
     $resultr=json_decode($result,true);
+ echo $resultr['mensaje'];
 
-
-    if($result['mensaje'] == 1){
-        echo "<script>
-                    alert('Transaccion Realizada con exito');
-                    window.location= 'consulta7.php'
-        </script>";
-        header("Location: index.php");
+    if($resultr['mensaje'] == 1){
+        $_SESSION['color']=2;
+        header("Location: subirreporte.php");
         exit;
     }else{
-        echo "<script>
-                    alert('Error al realizar transaccion');
-                    window.location= 'consulta7.php'
-        </script>";
+        $_SESSION['color']=3;
     header("Location: subirreporte.php");
     exit;
     }

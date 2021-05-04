@@ -14,7 +14,7 @@
     </head>
     <style>
         body {
-        background-image: url('https://lh3.googleusercontent.com/proxy/yHUjpfiYjeSFHHG8GibMo62xVE2duMBMpKH75C-kY81Pf8PTl64Iwb6J32nu-SNGn2K4');
+        background-image: url('https://steamuserimages-a.akamaihd.net/ugc/708526305132654960/B48B2A593B7C76205C510AD1AA3200004C7D1486/');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -37,17 +37,17 @@
                         <div class="dropdown-divider"></div>    
                         <a class="dropdown-item" href="obtenerreporte7.php">Realizar Transaccion</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="obtenerreportes.php">Transaccion By CuentaHabiente</a>
+                        <a class="dropdown-item" href="obtenerreporte1.php">Transaccion By CuentaHabiente</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="obtenerreportes.php">Debito By Institucion</a>
+                        <a class="dropdown-item" href="obtenerreporte2.php">Debito By Institucion</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="obtenerreportes.php">Credito By Institucion</a>
+                        <a class="dropdown-item" href="obtenerreporte3.php">Credito By Institucion</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="obtenerreportes.php">Cuentahabientes</a>
+                        <a class="dropdown-item" href="obtenerreporte4.php">Cuentahabientes</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="obtenerreportes.php">Institucion</a>
+                        <a class="dropdown-item" href="obtenerreporte5.php">Institucion</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="obtenerreportes.php">Movimientos by Cuentahabiente by Mes</a>
+                        <a class="dropdown-item" href="obtenerreporte6.php">Movimientos by Cuentahabiente by Mes</a>
                         <div class="dropdown-divider"></div>
                     </div>    
                 </li>

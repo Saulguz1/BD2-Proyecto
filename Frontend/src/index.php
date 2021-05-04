@@ -8,6 +8,7 @@ $_SESSION['reporte3']=[];
 $_SESSION['reporte4']=[];
 $_SESSION['reporte5']=[];
 $_SESSION['reporte6']=[];
+$_SESSION['color']=0;
 
 include_once "header.php";
 ?>

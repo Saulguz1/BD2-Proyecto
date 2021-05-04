@@ -10,12 +10,12 @@ include_once "header.php";
                             <div class="card-header">
                             <form method="post" action="consulta6.php" enctype="multipart/form-data">
 
-                            <label for="cuenta">Elegir CUI de cuentahabiente:</label>
+                            <label for="cuenta">Elegir Cuentahabiente:</label>
                             <select id="inputCui" name="inputCui">
                                 <?php  
                                             foreach ($_SESSION['cuentahabiente'] as $item) { 
                                                 echo "
-                                                <option value=".$item['cui'].">".$item['cui']."</option>
+<option value=".$item['cui'].">".$item['cui']." - ".$item['nombre']." - ".$item['apellido']." - ".$item['institucion']."</option>
                                                 ";
                                             }
                                         ?>    
@@ -37,6 +37,14 @@ include_once "header.php";
                                                 
                             </select>
 
+ </select>
+                            <label for="cuenta">Elegir Año:</label>
+                            <select id="inputano" name="inputano">
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                            
+                                                
+                            </select>
 
 
                             <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Submit">Buscar</button>
@@ -62,7 +70,6 @@ include_once "header.php";
                                                 <th>CUI</th>
                                                 <th>Nombre</th>
                                                 <th>Apellido</th>
-                                                <th>Email</th>
                                                 <th>Intitucion</th>
                                                 <th>Tipo Cuenta</th>
                                                 <th>Monto</th>
@@ -78,7 +85,6 @@ include_once "header.php";
                                                 <td align='center'>".$item['cui']."</td>
                                                 <td align='center'>".$item['nombre']."</td>
                                                 <td align='center'>".$item['apellido']."</td>
-                                                <td align='center'>".$item['email']."</td>
                                                 <td align='center'>".$item['institucion']."</td>
                                                 <td align='center'>".$item['tipocuenta']."</td>
                                                 <td align='center'>".$item['montotransf']."</td>

@@ -15,7 +15,7 @@ include_once "header.php";
                                 <?php  
                                             foreach ($_SESSION['cuentahabiente'] as $item) { 
                                                 echo "
-                                                <option value=".$item['cui'].">".$item['cui']."</option>
+                                                <option value=".$item['cui'].">".$item['cui']." - ".$item['nombre']." - ".$item['apellido']." - ".$item['institucion']."</option>
                                                 ";
                                             }
                                         ?>    
@@ -59,7 +59,6 @@ include_once "header.php";
                                                 <td align='center'>".$item['cui']."</td>
                                                 <td align='center'>".$item['nombre']."</td>
                                                 <td align='center'>".$item['apellido']."</td>
-                                                <td align='center'>".$item['email']."</td>
                                                 <td align='center'>".$item['institucion']."</td>
                                                 <td align='center'>".$item['saldoinicial']."</td>
                                                 <td align='center'>".$item['montotransf']."</td>
