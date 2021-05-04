@@ -1,0 +1,11 @@
+version: "3"
+
+services: 
+   
+    frontend:
+        container_name: Apache
+        build: ./Frontend
+        ports: 
+            - '80:80'
+        networks:
+            - service_network

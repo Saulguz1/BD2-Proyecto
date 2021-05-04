@@ -1,16 +1,16 @@
 <?php
+ob_start();
 session_start();
 $_SESSION['reporte1']=[];
-$url = 'http://localhost:5000/posttransaccionbycuenta';
+$url = 'http://127.0.0.1:5000/posttransaccionbycuenta';
 $cui = '0000';
 
 if (isset($_POST['inputCui'])) {
     $cui = $_POST['inputCui'];
 }
 
-$data = array('cui'=> $carnet);
+$data = array('cui'=> $cui);
 
-$data = array();
 $ch = curl_init( $url );
 # Setup request to send json via POST.
 $payload = json_encode( $data );

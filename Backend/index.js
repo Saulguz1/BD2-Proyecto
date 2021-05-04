@@ -22,7 +22,7 @@ client.connect(function (err,result){
 })
 
 
-app.get("/gettransaccionbycuenta", async (req, res) => {
+app.post("/gettransaccionbycuenta", async (req, res) => {
     client.execute('SELECT * FROM Proyecto.Transaccion_by_CuentaHabiente;').then(result=>res.json(result.rows));
 });
   
@@ -33,7 +33,7 @@ app.post("/posttransaccionbycuenta", async (req, res) => {
     client.execute(query, [cui], { prepare: true }).then(result=>res.json(result.rows));
 });
  
-app.get("/getDebito_by_Institucion", async (req, res) => {
+app.post("/getDebito_by_Institucion", async (req, res) => {
     client.execute('SELECT * FROM Proyecto.Debito_by_Institucion;').then(result=>res.json(result.rows));
 });
   
@@ -44,7 +44,7 @@ app.post("/postDebito_by_Institucion", async (req, res) => {
     client.execute(query, [institucion], { prepare: true }).then(result=>res.json(result.rows));
 });
 
-app.get("/getCredito_by_Institucion", async (req, res) => {
+app.post("/getCredito_by_Institucion", async (req, res) => {
     client.execute('SELECT * FROM Proyecto.Credito_by_Institucion;').then(result=>res.json(result.rows));
 });
   
@@ -55,15 +55,15 @@ app.post("/postCredito_by_Institucion", async (req, res) => {
     client.execute(query, [institucion], { prepare: true }).then(result=>res.json(result.rows));
 });
 
-app.get("/getCuentaHabiente", async (req, res) => {
+app.post("/getCuentaHabiente", async (req, res) => {
     client.execute('SELECT * FROM Proyecto.CuentaHabiente;').then(result=>res.json(result.rows));
 });
   
-app.get("/getInstitucion", async (req, res) => {
+app.post("/getInstitucion", async (req, res) => {
     client.execute('SELECT * FROM Proyecto.Institucion;').then(result=>res.json(result.rows));
 });
   
-app.get("/getMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
+app.post("/getMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
     client.execute('SELECT * FROM Proyecto.Movimientos_by_Cuentahabiente_by_mes;').then(result=>res.json(result.rows));
 });
 
