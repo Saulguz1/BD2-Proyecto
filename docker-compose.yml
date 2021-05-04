@@ -3,11 +3,6 @@ version: "3"
 services: 
     frontend:
         container_name: Apache
-        build: ./FrontEnd
+        build: ./Frontend
         ports: 
             - '80:80'
-    backend:
-        container_name: node
-        build: ./Backend
-        ports: 
-            - '5000:5000'

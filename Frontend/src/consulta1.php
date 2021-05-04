@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['reporte1']=[];
-$url = 'http://backend:5000/posttransaccionbycuenta';
+$url = 'http://localhost:5000/posttransaccionbycuenta';
 $cui = '0000';
 
 if (isset($_POST['inputCui'])) {
