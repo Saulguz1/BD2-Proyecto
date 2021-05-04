@@ -9,6 +9,7 @@ if (isset($_POST['inputins'])) {
     $inputins = $_POST['inputins'];
 }
 
+echo $inputins;
 $data = array('institucion'=> $inputins);
 
 $ch = curl_init( $url );

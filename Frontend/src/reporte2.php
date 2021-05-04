@@ -15,7 +15,7 @@ include_once "header.php";
                                 <?php  
                                             foreach ($_SESSION['institucion'] as $item) { 
                                                 echo "
-                                                <option value=".$item['institucion'].">".$item['institucion']."</option>
+                                                <option value='".$item['institucion']."'>".$item['institucion']."</option>
                                                 ";
                                             }
                                         ?>    
