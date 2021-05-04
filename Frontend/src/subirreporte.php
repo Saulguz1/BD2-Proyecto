@@ -9,28 +9,41 @@ include_once "header.php";
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Ingreso de reportes de practicantes</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Ingreso Nueva Transaccion</h3></div>
                                     <div class="card-body">
-                                        <form method="post" action="uploadreporterequest.php" enctype="multipart/form-data">
+                                        <form method="post" action="consulta7.php" enctype="multipart/form-data">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputCarnet">Carnet:</label>
-                                                        <input class="form-control py-4" id="inputCarnet"  name="inputCarnet" />
+                                                    <label for="cuenta">Elegir Cuenta Origen:</label>
+                                                    <select id="inputcuenta1" name="inputcuenta1">
+                                                        <?php  
+                                                                    foreach ($_SESSION['cuentahabiente'] as $item) { 
+                                                                        echo "
+                                                                        <option value=".$item.">".$item['cui']." - ".$item['nombre'].$item['apellido']." - ".$item['institucion']."</option>
+                                                                        ";
+                                                                    }
+                                                                ?>    
+                                                    </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputName">Nombre de Estudiante</label>
-                                                        <input class="form-control py-4" id="inputName"  name="inputName" />
+                                                    <label for="cuenta">Elegir Cuenta Destino:</label>
+                                                    <select id="inputcuenta2" name="inputcuenta2">
+                                                        <?php  
+                                                                    foreach ($_SESSION['cuentahabiente'] as $item) { 
+                                                                        echo "
+                                                                        <option value=".$item.">".$item['cui']." - ".$item['nombre'].$item['apellido']." - ".$item['institucion']."</option>
+                                                                        ";
+                                                                    }
+                                                                ?>    
+                                                    </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputCurso">Curso/Proyecto</label>
-                                                        <input class="form-control py-4" id="inputCurso"  name="inputCurso" />
+                                                        <label class="small mb-1" for="inputmonto">Monto a depositar: </label>
+                                                        <input class="form-control py-4" id="inputmonto"  name="inputmonto" type="number"/>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="inputCuerpo">Cuerpo del Reporte</label>
-                                                        <textarea class="form-control py-4" id="inputCuerpo" name="inputCuerpo" rows="10" cols="40"></textarea> 
-                                                    </div>
+                                
 
                                                 <div class="form-group mt-4 mb-0">
-                                                    <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Submit">Enviar reporte</button>
+                                                    <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Submit">Realizar Transaccion</button>
                                                 </div>
                                         </form>
  

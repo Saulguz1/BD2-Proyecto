@@ -35,7 +35,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="index.php">Inicio</a>
                         <div class="dropdown-divider"></div>    
-                        <a class="dropdown-item" href="subirreporte.php">Realizar Transaccion</a>
+                        <a class="dropdown-item" href="obtenerreporte7.php">Realizar Transaccion</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="obtenerreportes.php">Transaccion By CuentaHabiente</a>
                         <div class="dropdown-divider"></div>
@@ -63,7 +63,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Inicio
                             </a>
-                            <a class="nav-link" href="subirreporte.php">
+                            <a class="nav-link" href="obtenerreporte7.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Realizar Transaccion
                             </a>

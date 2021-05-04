@@ -115,12 +115,12 @@ app.post("/insertnuevo", async (req, res) => {
             params: [institucion2,abreviacion2,montotrasf,fechatransf]
         },
         {
-            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
-            params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1]
+            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura,saldoinicial) VALUES (?, ?, ?, ?,?, ?, ?, ?,?)',
+            params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,saldoi1]
         },
         {
-            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura) VALUES (?, ?, ?, ?,?, ?, ?, ?)',
-            params: [nombre2,apellido2,cui2,email2,fechareg2,genero2,institucion2,abreviacion2]
+            query: 'INSERT INTO Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura,saldoinicial) VALUES (?, ?, ?, ?,?, ?, ?, ?,?)',
+            params: [nombre2,apellido2,cui2,email2,fechareg2,genero2,institucion2,abreviacion2,saldoi2]
         },
         {
             query: 'INSERT INTO Proyecto.Institucion (institucion,abreviatura) VALUES (?, ?)',
@@ -133,7 +133,7 @@ app.post("/insertnuevo", async (req, res) => {
       ];
       
       client.batch(queries, { prepare: true });
-      res.json({mensage : 1});
+      res.json({mensaje : 1});
 });
 
 function getDateTime() {
