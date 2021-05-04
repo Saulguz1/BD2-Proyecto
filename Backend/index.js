@@ -128,7 +128,7 @@ app.post("/insertnuevo", async (req, res) => {
         },
         {
             query: 'INSERT INTO Proyecto.Movimientos_by_Cuentahabiente_by_mes (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            params: [nombre1,apellido1,cui1,email1.fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,montotrasf,fechatransf]
+            params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,montotrasf,fechatransf]
         }
       ];
       
@@ -139,7 +139,7 @@ app.post("/insertnuevo", async (req, res) => {
 function getDateTime() {
 
     var date = new Date();
-    var year = date.getYear();
+    var year = date.getFullYear();
     var month = date.getMonth() + 1;
     month = (month < 10 ? "0" : "") + month;
     var day  = date.getDate();
