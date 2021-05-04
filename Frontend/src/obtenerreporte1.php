@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['reporte1']=[];
-$url = 'http://localhost:5000/gettransaccionbycuenta';
+$url = 'http://127.0.0.1:5000/gettransaccionbycuenta';
 
 $data = array();
 $ch = curl_init( $url );
