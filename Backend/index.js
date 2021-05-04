@@ -13,9 +13,8 @@ app.listen(port);
 console.log('Listening on port', port);
 
 const client = new cassandra.Client({
-    contactPoints: ['localhost'],
-    localDataCenter:'datacenter1',
-    keyspace : 'Proyecto'
+    contactPoints: ['127.0.0.1'],
+    localDataCenter:'datacenter1'
   });
 
 client.connect(function (err,result){
@@ -24,7 +23,7 @@ client.connect(function (err,result){
 
 
 app.get("/gettransaccionbycuenta", async (req, res) => {
-    client.execute('SELECT * FROM Transaccion_by_CuentaHabiente;');
+    client.execute('SELECT * FROM Proyecto.Transaccion_by_CuentaHabiente;').then(result=>res.json(result.rows));
 });
   
 app.post("/posttransaccionbycuenta", async (req, res) => {
