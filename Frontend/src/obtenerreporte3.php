@@ -1,11 +1,11 @@
 <?php
 ob_start();
 session_start();
-$_SESSION['cuentahabiente']=[];
-$url = 'http://127.0.0.1:5000/getCuentaHabiente';
+
+$_SESSION['institucion']=[];
+$url = 'http://127.0.0.1:5000/getInstitucion';
 
 $data = array();
-
 $ch = curl_init( $url );
 # Setup request to send json via POST.
 $payload = json_encode( $data );
@@ -23,16 +23,16 @@ $resultr=json_decode($result,true);
 
 
 if(sizeof($resultr) != 0){
-    $_SESSION['cuentahabiente']=$resultr;
+    $_SESSION['institucion']=$resultr;
+
 }else{
-    $_SESSION['cuentahabiente']=[];
+    $_SESSION['institucion']=[];
+ 
 }
 
 
-
-
-$_SESSION['reporte1']=[];
-$url = 'http://127.0.0.1:5000/gettransaccionbycuenta';
+$_SESSION['reporte3']=[];
+$url = 'http://127.0.0.1:5000/getCredito_by_Institucion';
 
 $data = array();
 $ch = curl_init( $url );
@@ -52,17 +52,13 @@ $resultr=json_decode($result,true);
 
 
 if(sizeof($resultr) != 0){
-    $_SESSION['reporte1']=$resultr;
-   header("Location: reporte1.php");
+    $_SESSION['reporte3']=$resultr;
+   header("Location: reporte3.php");
    exit;
 }else{
-    $_SESSION['reporte1']=[];
-   header("Location: reporte1.php");
+    $_SESSION['reporte3']=[];
+   header("Location: reporte3.php");
   exit;
 }
-
-
-
-
 
 ?>

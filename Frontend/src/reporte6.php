@@ -8,7 +8,7 @@ include_once "header.php";
                                 Transaccion_by_CuentaHabiente 
                             </div>
                             <div class="card-header">
-                            <form method="post" action="consulta1.php" enctype="multipart/form-data">
+                            <form method="post" action="consulta6.php" enctype="multipart/form-data">
 
                             <label for="cuenta">Elegir CUI de cuentahabiente:</label>
                             <select id="inputCui" name="inputCui">
@@ -20,6 +20,25 @@ include_once "header.php";
                                             }
                                         ?>    
                             </select>
+                            <label for="cuenta">Elegir Mes:</label>
+                            <select id="inputmes" name="inputmes">
+                                <option value="01">01</option>
+                                <option value="01">02</option>
+                                <option value="01">03</option>
+                                <option value="01">04</option>
+                                <option value="01">05</option>
+                                <option value="01">06</option>
+                                <option value="01">07</option>
+                                <option value="01">08</option>
+                                <option value="01">09</option>
+                                <option value="01">10</option>
+                                <option value="01">11</option>
+                                <option value="01">12</option>
+                                                
+                            </select>
+
+
+
                             <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Submit">Buscar</button>
                             </form>
                             </div>
@@ -53,7 +72,7 @@ include_once "header.php";
                                         <tbody>
                                         <?php
                                           
-                                            foreach ($_SESSION['reporte1'] as $item) {
+                                            foreach ($_SESSION['reporte6'] as $item) {
                                                 echo "
                                                 <tr>
                                                 <td align='center'>".$item['cui']."</td>

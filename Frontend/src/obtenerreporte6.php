@@ -28,11 +28,8 @@ if(sizeof($resultr) != 0){
     $_SESSION['cuentahabiente']=[];
 }
 
-
-
-
-$_SESSION['reporte1']=[];
-$url = 'http://127.0.0.1:5000/gettransaccionbycuenta';
+$_SESSION['reporte6']=[];
+$url = 'http://127.0.0.1:5000/getMovimientos_by_Cuentahabiente_by_mes';
 
 $data = array();
 $ch = curl_init( $url );
@@ -52,17 +49,13 @@ $resultr=json_decode($result,true);
 
 
 if(sizeof($resultr) != 0){
-    $_SESSION['reporte1']=$resultr;
-   header("Location: reporte1.php");
+    $_SESSION['reporte6']=$resultr;
+   header("Location: reporte6.php");
    exit;
 }else{
-    $_SESSION['reporte1']=[];
-   header("Location: reporte1.php");
+    $_SESSION['reporte6']=[];
+   header("Location: reporte6.php");
   exit;
 }
-
-
-
-
 
 ?>
