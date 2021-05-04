@@ -18,7 +18,7 @@ include_once "header.php";
                                                         <?php  
                                                                     foreach ($_SESSION['cuentahabiente'] as $item) { 
                                                                         echo "
-                                                                        <option value=".$item.">".$item['cui']." - ".$item['nombre'].$item['apellido']." - ".$item['institucion']." - ".$item['saldoinicial']."</option>
+                                                                        <option value='".$item['nombre'].",".$item['apellido'].",".$item['cui'].",".$item['email'].",".$item['fechareg'].",".$item['genero'].",".$item['institucion'].",".$item['abreviatura'].",".$item['tipocuenta'].",".$item['saldoinicial']."'>".$item['cui']." - ".$item['nombre'].$item['apellido']." - ".$item['institucion']." - ".$item['tipocuenta']." - ".$item['saldoinicial']."</option>
                                                                         ";
                                                                     }
                                                                 ?>    
@@ -30,7 +30,7 @@ include_once "header.php";
                                                         <?php  
                                                                     foreach ($_SESSION['cuentahabiente'] as $item) { 
                                                                         echo "
-                                                                        <option value=".$item.">".$item['cui']." - ".$item['nombre'].$item['apellido']." - ".$item['institucion']." - ".$item['saldoinicial']."</option>
+                                                                        <option value='".$item['nombre'].",".$item['apellido'].",".$item['cui'].",".$item['email'].",".$item['fechareg'].",".$item['genero'].",".$item['institucion'].",".$item['abreviatura'].",".$item['tipocuenta'].",".$item['saldoinicial']."'>".$item['cui']." - ".$item['nombre'].$item['apellido']." - ".$item['institucion']." - ".$item['tipocuenta']." - ".$item['saldoinicial']."</option>
                                                                         ";
                                                                     }
                                                                 ?>    

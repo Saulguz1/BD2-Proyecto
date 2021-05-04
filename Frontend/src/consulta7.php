@@ -3,21 +3,24 @@ ob_start();
 session_start();
 
 $url = 'http://127.0.0.1:5000/insertnuevo';
-$cuenta1 = '';
-$cuenta2 = '';
-$monto = '';
+$strcuenta1 = '';
+$strcuenta2 = '';
+$monto = 0;
 
 
 if (isset($_POST['inputcuenta1'])) {
-    $cuenta1 = $_POST['inputcuenta1'];
+    $strcuenta1 = $_POST['inputcuenta1'];
 }
 if (isset($_POST['inputcuenta2'])) {
-    $cuenta2 = $_POST['inputcuenta2'];
+    $strcuenta2 = $_POST['inputcuenta2'];
 }
 if (isset($_POST['inputmonto'])) {
     $monto = $_POST['inputmonto'];
 }
-if($monto > $cuenta1['saldoinicial']){
+$cuenta1 = explode(',', $strcuenta1);
+$cuenta2 = explode(',', $strcuenta2);
+
+if($monto > $cuenta1[9]){
     echo "<script>
                 alert('Error al realizar transaccion, no tiene fondos suficientes');
                 window.location= 'consulta7.php'
@@ -25,7 +28,7 @@ if($monto > $cuenta1['saldoinicial']){
    header("Location: subirreporte.php");
    exit;
 }else{
-    $data = array('nombre1'=> $cuenta1['nombre'],'apellido1'=> $cuenta1['apellido'],'cui1'=> $cuenta1['cui'],'email1'=> $cuenta1['email'],'fechareg1'=> $cuenta1['fechareg'],'genero1'=> $cuenta1['genero'],'institucion1'=> $cuenta1['institucion'],'abreviacion1'=> $cuenta1['abreviatura'],'tipocuenta1'=> 'Ahorro','saldoi1'=> $cuenta1['saldoinicial'],'nombre2'=> $cuenta2['nombre'],'apellido2'=> $cuenta2['apellido'],'cui2'=> $cuenta2['cui'],'email2'=> $cuenta2['email'],'fechareg2'=> $cuenta2['fechareg'],'genero2'=> $cuenta2['genero'],'institucion2'=> $cuenta2['institucion'],'abreviacion2'=> $cuenta2['abreviatura'],'tipocuenta2'=> 'Ahorro','saldoi2'=> $cuenta2['saldoinicial'],'montotrasf'=> $monto);
+    $data = array('nombre1'=> $cuenta1[0],'apellido1'=> $cuenta1[1],'cui1'=> $cuenta1[2],'email1'=> $cuenta1[3],'fechareg1'=> $cuenta1[4],'genero1'=> $cuenta1[5],'institucion1'=> $cuenta1[6],'abreviacion1'=> $cuenta1[7],'tipocuenta1'=> $cuenta1[8],'saldoi1'=> $cuenta1[9],'nombre2'=> $cuenta2[0],'apellido2'=> $cuenta2[1],'cui2'=> $cuenta2[2],'email2'=> $cuenta2[3],'fechareg2'=> $cuenta2[4],'genero2'=> $cuenta2[5],'institucion2'=> $cuenta2[6],'abreviacion2'=> $cuenta2[7],'tipocuenta2'=> $cuenta2[8],'saldoi2'=> $cuenta2[9],'montotrasf'=> $monto);
     $ch = curl_init( $url );
     # Setup request to send json via POST.
     $payload = json_encode( $data );
