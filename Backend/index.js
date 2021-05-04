@@ -132,8 +132,7 @@ app.post("/postMovimientos_by_Cuentahabiente_by_mes", async (req, res) => {
         }
       ];
       
-      await client.batch(queries, { prepare: true });
-      res.json({mensage : 1});
+           
 });
 
 function getDateTime() {
