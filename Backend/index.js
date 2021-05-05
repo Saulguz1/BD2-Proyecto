@@ -100,6 +100,9 @@ app.post("/insertnuevo", async (req, res) => {
     let saldoi2 = body.saldoi2;
     let montotrasf = body.montotrasf;
     let fechatransf = getDateTime();
+    let saldomenos = body.saldomenos;
+    let saldomas= body.saldomas;
+
 
     const queries = [
         {
@@ -129,7 +132,20 @@ app.post("/insertnuevo", async (req, res) => {
         {
             query: 'INSERT INTO Proyecto.Movimientos_by_Cuentahabiente_by_mes (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
             params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,montotrasf,fechatransf]
+        },
+        {
+            query: 'UPDATE Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura,tipocuenta,saldoinicial) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?,?)',
+            params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,saldoi1]
+        },
+        {
+            query: 'UPDATE Proyecto.CuentaHabiente saldoinicial = ? WHERE cui = ? AND institucion = ? AND fechareg = ?',
+            params: [saldomenos,cui1,institucion1,fechareg1]
+        },
+        {
+            query: 'UPDATE Proyecto.CuentaHabiente saldoinicial = ? WHERE cui = ? AND institucion = ? AND fechareg = ?',
+            params: [saldomas,cui2,institucion2,fechareg2]
         }
+        
       ];
       
       client.batch(queries, { prepare: true })
