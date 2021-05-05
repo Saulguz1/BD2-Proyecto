@@ -102,8 +102,10 @@ app.post("/insertnuevo", async (req, res) => {
     let fechatransf = getDateTime();
     let saldomenos = body.saldomenos;
     let saldomas= body.saldomas;
-
-
+    console.log(saldomenos,cui1,institucion1,fechareg1);
+    console.log(saldomas,cui2,institucion2,fechareg2);
+    let sal = saldoi1 - montotrasf;
+    console.log(sal)
     const queries = [
         {
           query: 'INSERT INTO Proyecto.Transaccion_by_CuentaHabiente (nombre, apellido, cui, email, fechareg, genero, institucion, abreviatura,tipocuenta, saldoinicial, montotransf,fechatransf) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)',
@@ -134,15 +136,7 @@ app.post("/insertnuevo", async (req, res) => {
             params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,montotrasf,fechatransf]
         },
         {
-            query: 'UPDATE Proyecto.CuentaHabiente (nombre,apellido,cui,email,fechareg,genero,institucion,abreviatura,tipocuenta,saldoinicial) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?,?)',
-            params: [nombre1,apellido1,cui1,email1,fechareg1,genero1,institucion1,abreviacion1,tipocuenta1,saldoi1]
-        },
-        {
-            query: 'UPDATE Proyecto.CuentaHabiente saldoinicial = ? WHERE cui = ? AND institucion = ? AND fechareg = ?',
-            params: [saldomenos,cui1,institucion1,fechareg1]
-        },
-        {
-            query: 'UPDATE Proyecto.CuentaHabiente saldoinicial = ? WHERE cui = ? AND institucion = ? AND fechareg = ?',
+            query: 'UPDATE Proyecto.CuentaHabiente SET saldoinicial = ? WHERE cui = ? AND institucion = ? AND fechareg = ?',
             params: [saldomas,cui2,institucion2,fechareg2]
         }
         
@@ -150,9 +144,13 @@ app.post("/insertnuevo", async (req, res) => {
       
       client.batch(queries, { prepare: true })
       .then(function() {
-        res.json({mensaje : 1});
+        
+	const query = 'UPDATE Proyecto.CuentaHabiente SET saldoinicial = ? WHERE cui = ? AND institucion = ? AND fechareg = ?';
+	    client.execute(query, [saldomenos,cui1,institucion1,fechareg1], { prepare: true });
+	res.json({mensaje : 1});
       })
       .catch(function(err) {
+console.log(err);
         res.json({mensaje : 0});
       });
 
