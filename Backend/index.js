@@ -34,24 +34,24 @@ app.post("/posttransaccionbycuenta", async (req, res) => {
 });
  
 app.post("/getDebito_by_Institucion", async (req, res) => {
-    client.execute('SELECT * FROM Proyecto.Debito_by_Institucion;').then(result=>res.json(result.rows));
+    client.execute('SELECT institucion,abreviatura,SUM(montotransf) as montotransf,fechatransf FROM Proyecto.Debito_by_Institucion Group by institucion;').then(result=>res.json(result.rows));
 });
   
 app.post("/postDebito_by_Institucion", async (req, res) => {
     let body = req.body;
     let institucion = body.institucion;
-    const query = 'SELECT * FROM Proyecto.Debito_by_Institucion WHERE institucion =  ?';
+    const query = 'SELECT institucion,abreviatura,SUM(montotransf) as montotransf ,fechatransf FROM Proyecto.Debito_by_Institucion WHERE institucion =  ? Group by institucion;';
     client.execute(query, [institucion], { prepare: true }).then(result=>res.json(result.rows));
 });
 
 app.post("/getCredito_by_Institucion", async (req, res) => {
-    client.execute('SELECT * FROM Proyecto.Credito_by_Institucion;').then(result=>res.json(result.rows));
+    client.execute('SELECT institucion,abreviatura,SUM(montotransf) as montotransf,fechatransf FROM Proyecto.Credito_by_Institucion Group by institucion;').then(result=>res.json(result.rows));
 });
   
 app.post("/postCredito_by_Institucion", async (req, res) => {
     let body = req.body;
     let institucion = body.institucion;
-    const query = 'SELECT * FROM Proyecto.Credito_by_Institucion WHERE institucion = ?';
+    const query = 'SELECT institucion,abreviatura,SUM(montotransf) as montotransf,fechatransf FROM Proyecto.Credito_by_Institucion WHERE institucion = ? Group by institucion;';
     client.execute(query, [institucion], { prepare: true }).then(result=>res.json(result.rows));
 });
 
