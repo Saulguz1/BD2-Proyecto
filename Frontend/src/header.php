@@ -49,6 +49,8 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="obtenerreporte6.php">Movimientos by Cuentahabiente by Mes</a>
                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="Login.php">Cerrar Sesion</a>
+                        <div class="dropdown-divider"></div>
                     </div>    
                 </li>
             </ul>
@@ -95,6 +97,10 @@
                             
                            
                         </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        <?php echo "".$_SESSION['username']."";?>
                     </div>
                 </nav>
             </div>
